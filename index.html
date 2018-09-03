@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html manifest="file.manifest">
+  <head>
+    <meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--Style Sheet for the index.html page -->
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <!--Icons for mobile app icons-->
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="80x80" href="touch-icon-spotlight.png">
+    <script src="jquery-3.2.1.min.js"></script>
+      <title>QuickDASH Calculator</title>
+  </head>
+  <body>
+    <form method="post" class="Form">
+      <input type="number" id="main" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Main<br>
+      <input type="number" id="work" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Work<br>
+      <input type="number" id="sport" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Music/Sport<br>
+    </form>
+    <br><br>
+      <button id="calculate">Calculate</button>
+      <button id="Reset" class="green">Reset</button>
+      <br>
+      <br>
+    <form class="Form">
+      QuickDASH<input type="text" id="mainOutput">%<br>
+      QuickDASH Work<input type="text" id="workOutput">%<br>
+      QuickDASH Music/Sport<input type="text" id="sportOutput">%<br>
+    </form>
+
+    <!-- jquery script -->
+  <script>
+  $("button#calculate").on("click", function () {
+    function sum(n) {
+    	var total = 0;
+    	while (n > 0) {
+    		total += n % 10;
+    		n = Math.floor(n/10);
+    	}
+    	return total;
+    }
+    // Grabbing inputs
+    var mainRaw = $("input#main").val();
+    var workRaw = $("input#work").val();
+    var sportRaw = $("input#sport").val();
+    //Input Lengths
+    var mainLength = mainRaw.length;
+    var workLength = workRaw.length;
+    var sportLength = sportRaw.length;
+    //Summing items
+    var mainScore = ((sum(mainRaw) / mainLength) - 1) * 25;
+    var workScore = ((sum(workRaw) / workLength) - 1) * 25;
+    var sportScore = ((sum(sportRaw) / sportLength) - 1) * 25;
+    //Equations using the values
+    $("input#mainOutput").val(Math.round(100*mainScore)/100);
+    $("input#workOutput").val(Math.round(100*workScore)/100);
+    $("input#sportOutput").val(Math.round(100*sportScore)/100);
+
+  });
+  $("button#Reset").on("click", function () {
+    $('.Form').trigger("reset");
+  });
+  </script>
+  </body>
+</html>
