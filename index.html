@@ -18,18 +18,18 @@
   <body>
     <form method="post" class="Form">
       <input type="number" id="main" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Main<br>
-      <input type="number" id="work" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Work<br>
-      <input type="number" id="sport" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Music/Sport<br>
+      <input type="number" class="short" id="work" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Work<br>
+      <input type="number" class="short" id="sport" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"> Music/Sport
     </form>
-    <br><br>
+    <br>
       <button id="calculate">Calculate</button>
       <button id="Reset" class="green">Reset</button>
       <br>
       <br>
     <form class="Form">
-      QuickDASH<input type="text" id="mainOutput">%<br>
-      QuickDASH Work<input type="text" id="workOutput">%<br>
-      QuickDASH Music/Sport<input type="text" id="sportOutput">%<br>
+      QuickDASH<input type="text" id="mainOutput">%<br><br>
+      Work<input type="text" id="workOutput">%<br><br>
+      Music/Sport<input type="text" id="sportOutput">%
     </form>
 
     <!-- jquery script -->
