@@ -35,6 +35,7 @@
     <!-- jquery script -->
   <script>
   $("button#calculate").on("click", function () {
+    // Summing function with number inputs
     function sum(n) {
     	var total = 0;
     	while (n > 0) {
@@ -56,7 +57,7 @@
     var mainLength = mainRaw.length;
     var workLength = workRaw.length;
     var sportLength = sportRaw.length;
-    // Summing items
+    // QuickDASH equation
     var mainScore = ((sum(mainRaw) / mainLength) - 1) * 25;
     var workScore = ((sum(workRaw) / workLength) - 1) * 25;
     var sportScore = ((sum(sportRaw) / sportLength) - 1) * 25;
@@ -77,8 +78,8 @@
 
     // Testing for numbers 6-9
     if(mainTest) {alert("QuickDASH scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
-    if(workTest) {alert("QuickDASH Work scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
-    if(sportTest) {alert("QuickDASH Sport scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
+    if(workTest) {alert("QuickDASH Work scores do not include 6, 7, 8 or 9");$("input#workOutput").val("Error");}
+    if(sportTest) {alert("QuickDASH Sport scores do not include 6, 7, 8 or 9");$("input#sportOutput").val("Error");}
 
   });
   $("button#Reset").on("click", function () {
