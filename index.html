@@ -49,7 +49,9 @@
     var sportRaw = $("input#sport").val();
     // Validating inputs (no 6-9 digits)
     var search = /[6-9]/;
-    var numTest = search.test(mainRaw);
+    var mainTest = search.test(mainRaw);
+    var workTest = search.test(workRaw);
+    var sportTest = search.test(sportRaw);
     // Input Lengths
     var mainLength = mainRaw.length;
     var workLength = workRaw.length;
@@ -74,7 +76,9 @@
     if (sportLength > 4) {alert ("Error, more than 4 items");$("input#sportOutput").val("Error");}
 
     // Testing for numbers 6-9
-    if(numTest) {alert("QuickDASH scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
+    if(mainTest) {alert("QuickDASH scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
+    if(workTest) {alert("QuickDASH Work scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
+    if(sportTest) {alert("QuickDASH Sport scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
 
   });
   $("button#Reset").on("click", function () {
