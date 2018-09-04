@@ -27,9 +27,9 @@
       <br>
       <br>
     <form class="Form">
-      QuickDASH<input type="text" id="mainOutput">%<br><br>
-      Work<input type="text" id="workOutput">%<br><br>
-      Music/Sport<input type="text" id="sportOutput">%
+      QuickDASH&nbsp&nbsp<input type="text" id="mainOutput">%<br><br>
+      Work&nbsp&nbsp<input type="text" id="workOutput">%<br><br>
+      Music/Sport&nbsp&nbsp<input type="text" id="sportOutput">%
     </form>
 
     <!-- jquery script -->
@@ -47,28 +47,34 @@
     var mainRaw = $("input#main").val();
     var workRaw = $("input#work").val();
     var sportRaw = $("input#sport").val();
-    //Input Lengths
+    // Validating inputs (no 6-9 digits)
+    var search = /[6-9]/;
+    var numTest = search.test(mainRaw);
+    // Input Lengths
     var mainLength = mainRaw.length;
     var workLength = workRaw.length;
     var sportLength = sportRaw.length;
-    //Summing items
+    // Summing items
     var mainScore = ((sum(mainRaw) / mainLength) - 1) * 25;
     var workScore = ((sum(workRaw) / workLength) - 1) * 25;
     var sportScore = ((sum(sportRaw) / sportLength) - 1) * 25;
-    //Equations using the values
+    // Equations using the values
     $("input#mainOutput").val(Math.round(100*mainScore)/100);
     $("input#workOutput").val(Math.round(100*workScore)/100);
     $("input#sportOutput").val(Math.round(100*sportScore)/100);
-    //Length alerts
-    if (mainLength < 10 && mainLength !== 0) {alert("A QuickDASH score may not be calculated with more than 1 item missing");$("input#mainOutput").val("Error");}
-    else if (mainLength > 11) {alert ("Error, more than 11 items")}
-
-    if (workLength < 4 && workLength !== 0) {alert ("A Work QuickDASH score may not be calculated with missing items");$("input#workOutput").val("Error");}
+    // Length alerts
+    if (mainLength < 10 && mainLength !== 0) {alert(mainLength + " items entered. A QuickDASH score may not be calculated with more than 1 item missing");$("input#mainOutput").val("Error");}
+    else if (mainLength > 11) {alert ("Error, " + (mainLength) + " items listed.");$("input#mainOutput").val("Error");}
+    // Testing for missing items in Sport or Work modules
+    if (workLength < 4 && workLength !== 0) {alert ("A QuickDASH Work score may not be calculated with missing items.");$("input#workOutput").val("Error");}
     if (sportLength < 4 && sportLength !== 0)
-    {alert ("A Sport QuickDASH score may not be calculated with missing items");$("input#sportOutput").val("Error");}
-
+    {alert ("A QuickDASH Sport score may not be calculated with missing items.");$("input#sportOutput").val("Error");}
+    // Testing for more than 4 entries in Work or Sport modules
     if (workLength > 4) {alert ("Error, more than 4 items");$("input#workOutput").val("Error");}
     if (sportLength > 4) {alert ("Error, more than 4 items");$("input#sportOutput").val("Error");}
+
+    // Testing for numbers 6-9
+    if(numTest) {alert("QuickDASH scores do not include 6, 7, 8 or 9");$("input#mainOutput").val("Error");}
 
   });
   $("button#Reset").on("click", function () {
