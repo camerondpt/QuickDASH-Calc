@@ -63,7 +63,7 @@
     $("input#workOutput").val(Math.round(100*workScore)/100);
     $("input#sportOutput").val(Math.round(100*sportScore)/100);
     // Length alerts
-    if (mainLength < 10 && mainLength !== 0) {alert("Error, " + mainLength + " items entered. A QuickDASH score may not be calculated with more than 1 item missing.");$("input#mainOutput").val("Error");}
+    if (mainLength < 10 && mainLength !== 0) {alert("Error, only " + mainLength + " items entered. A QuickDASH score may not be calculated with more than 1 item missing.");$("input#mainOutput").val("Error");}
     else if (mainLength > 11) {alert ("Error, " + (mainLength) + " items listed.");$("input#mainOutput").val("Error");}
     // Testing for missing items in Sport or Work modules
     if (workLength < 4 && workLength !== 0) {alert ("A QuickDASH Work score may not be calculated with missing items.");$("input#workOutput").val("Error");}
